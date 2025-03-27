@@ -46,39 +46,41 @@ const Signup = () => {
 
   }
   console.log(process.env.REACT_APP_SERVER_DOMIN)
-  const handleSubmit = async(e)=>{
-    e.preventDefault()
-    const {firstName,email,password,confirmPassword} = data
-    if(firstName && email && password &&confirmPassword){
-        if(password === confirmPassword){
-            const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/signup`,
-              {
-              method : "POST",
-              headers : {
-                "content-type" : "application/json"
-              },
-              body : JSON.stringify(data)
-            })
-
-            const dataRes = await fetchData.json()
-            console.log(dataRes)
-            // // alert(dataRes.message)
-            // toast(dataRes.message)
-            // if(dataRes.alert){
-            //   navigate("/login")
-            // }
-            alert("succesful")
-            // navigate("/login")
-            
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { firstName, email, password, confirmPassword } = data;
+  
+    if (firstName && email && password && confirmPassword) {
+      if (password === confirmPassword) {
+        try {
+          const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/signup`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json" // Corrected header key
+            },
+            body: JSON.stringify(data)
+          });
+  
+          if (!fetchData.ok) {
+            throw new Error(`HTTP error! status: ${fetchData.status}`);
+          }
+  
+          const dataRes = await fetchData.json();
+          console.log(dataRes);
+          alert("successful");
+          // navigate("/login");
+        } catch (error) {
+          console.error('Request failed:', error);
+          alert('An error occurred during the request.');
         }
-        else{
-            alert("password and confirm password not equal")
-        }
+      } else {
+        alert("password and confirm password not equal");
+      }
+    } else {
+      alert("enter all fields");
     }
-    else{
-        alert("enter all fields")
-    }
-  }
+  };
+  
   console.log(data)
   return (
     <div className="p-3 md:p-4">
