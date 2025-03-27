@@ -4,6 +4,7 @@ import loginSignupImage from "../assest/login-animation.gif";
 import { BiHide } from "@react-icons/all-files/bi/BiHide";
 import { BiShow } from "@react-icons/all-files/bi/BiShow";
 import { ImagetoBase64 } from "../utility/ImagetoBase64"
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const navigate = useNavigate()
@@ -67,8 +68,13 @@ const Signup = () => {
   
           const dataRes = await fetchData.json();
           console.log(dataRes);
-          alert("successful");
-          // navigate("/login");
+          // alert(dataRes.message)
+          toast(dataRes.message)
+          if(dataRes.alert){
+            navigate("/login")
+          }
+
+          
         } catch (error) {
           console.error('Request failed:', error);
           alert('An error occurred during the request.');
