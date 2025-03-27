@@ -49,7 +49,7 @@ app.get("/", (req, res) => {
         } else {
             const data = new userModel(req.body); // Ensure req.body is correctly formatted
             await data.save();
-            res.send({ message: "Successfully signed up" });
+            res.send({ message: "Successfully signed up",alert : true });
         }
     } catch (err) {
         console.error(err);
