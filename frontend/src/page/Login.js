@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import loginSignupImage from "../assest/login-animation.gif";
 import { BiHide } from "@react-icons/all-files/bi/BiHide";
 import { BiShow } from "@react-icons/all-files/bi/BiShow";
+import {toast} from "react-hot-toast"
+
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +15,7 @@ const Login = () => {
       password: "",
 
     });
+    const navigate = useNavigate() 
     const handleShowPassword = () => {
       setShowPassword((preve) => !preve);
     };
@@ -42,6 +45,16 @@ const Login = () => {
           throw new Error(`HTTP error! status: ${fetchData.status}`);
         }
               
+        const dataRes = await fetchData.json()
+      console.log(dataRes)
+      
+      toast(dataRes.message)
+      if(dataRes.alert){
+        // dispatch(loginRedux(dataRes))
+        setTimeout(() => {
+          navigate("/")
+        }, 1000);
+      }
           }
           
       

@@ -59,8 +59,35 @@ app.get("/", (req, res) => {
     }
 });
 //api login
-app.post("/login", (req, res) => {
+app.post("/login", async(req, res) => {
     console.log(req.body);
+    const { email } = req.body;
+    try {
+        const result = await userModel.findOne({ email: email });
+        
+
+        if (result) {
+            const dataSend = {
+                _id: result._id,
+                firstName: result.firstName,
+                lastName: result.lastName,
+                email: result.email,
+                image: result.image,
+              }
+            console.log(dataSend)
+            res.send({message : "Login is succesfel",alert: true,data: dataSend,})
+        } else {
+            res.send({
+              message: "Email is not available, please sign up",
+              alert: false,
+            });
+          }
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ message: "Internal Server Error" });
+    }
+    
+
 })    
 
 //server is running
