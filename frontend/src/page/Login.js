@@ -8,12 +8,10 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
     
     const [data, setData] = useState({
-      firstName: "",
-      lastName: "",
+
       email: "",
       password: "",
-      confirmPassword: "",
-      image : ""
+
     });
     const handleShowPassword = () => {
       setShowPassword((preve) => !preve);
@@ -28,12 +26,21 @@ const Login = () => {
           }
       })
     }
-    const handleSubmit = (e)=>{
+    const handleSubmit = async(e)=>{
       e.preventDefault()
       const {email,password} = data
       if( email && password ){
-          
-              alert("succesful")
+        const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json" // Corrected header key
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (!fetchData.ok) {
+          throw new Error(`HTTP error! status: ${fetchData.status}`);
+        }
               
           }
           

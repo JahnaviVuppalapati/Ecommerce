@@ -36,6 +36,8 @@ const userModel = mongoose.model("user", userSchema);
 app.get("/", (req, res) => {
     res.send("Server is running");
   })
+
+ //signup 
   app.post("/signup", async (req, res) => {
     console.log(req.body);
     const { email } = req.body;
@@ -56,6 +58,10 @@ app.get("/", (req, res) => {
         res.status(500).send({ message: "Internal Server Error" });
     }
 });
+//api login
+app.post("/login", (req, res) => {
+    console.log(req.body);
+})    
 
-
+//server is running
 app.listen(PORT, () => console.log("server is running at port : " + PORT));
