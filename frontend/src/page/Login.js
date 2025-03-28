@@ -4,7 +4,8 @@ import loginSignupImage from "../assest/login-animation.gif";
 import { BiHide } from "@react-icons/all-files/bi/BiHide";
 import { BiShow } from "@react-icons/all-files/bi/BiShow";
 import {toast} from "react-hot-toast"
-
+import { useDispatch, useSelector } from "react-redux";
+import { loginRedux } from "../redux/userSlice";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,6 +17,11 @@ const Login = () => {
 
     });
     const navigate = useNavigate() 
+
+    const userData = useSelector(state => state)
+
+
+    const dispatch = useDispatch()
     const handleShowPassword = () => {
       setShowPassword((preve) => !preve);
     };
@@ -48,13 +54,16 @@ const Login = () => {
         const dataRes = await fetchData.json()
       console.log(dataRes)
       
-      toast(dataRes.message)
+      
+      toast( dataRes.message)
       if(dataRes.alert){
-        // dispatch(loginRedux(dataRes))
+        dispatch(loginRedux(dataRes))
         setTimeout(() => {
           navigate("/")
         }, 1000);
       }
+
+      console.log(userData)
           }
           
       
@@ -62,7 +71,7 @@ const Login = () => {
           alert("enter all fields")
       }
     }
-    console.log(data)
+    // console.log(data)
   return (
     <div className="p-3 md:p-4">
           <div className="w-full max-w-md bg-white m-auto flex  flex-col p-4">
