@@ -90,14 +90,17 @@ const Newproduct = () => {
           <option value={"other"}>select category</option>
           <option value={"fruits"}>Fruits</option>
           <option value={"vegetable"}>Vegetable</option>
-          <option value={"icream"}>Icream</option>
+          <option value={"iceream"}>Icecream</option>
           <option value={"dosa"}>Dosa</option>
           <option value={"pizza"}>Pizza</option>
           <option value={"rice"}>rice</option>
           <option value={"cake"}>Cake</option>
           <option value={"burger"}>Burger</option>
-          <option value={"panner"}>Panner</option>
+          <option value={"paneer"}>Paneer</option>
           <option value={"sandwich"}>Sandwich</option>
+          <option value={"chicken"}>Chicken</option>
+          <option value={"pasta"}>Pasta</option>
+
         </select>
 
         <label htmlFor='image'>Image
