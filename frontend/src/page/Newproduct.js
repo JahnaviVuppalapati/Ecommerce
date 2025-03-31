@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { toast } from 'react-hot-toast'
 import {BsCloudUpload} from "react-icons/bs"
 import { ImagetoBase64 } from '../utility/ImagetoBase64'
 
@@ -35,39 +36,39 @@ const Newproduct = () => {
 }
   
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = async(e)=>{
     e.preventDefault()
     console.log(data)
 
-    // const {name,image,category,price} = data
+    const {name,image,category,price} = data
 
-    // if(name && image && category && price){
-    //   const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/uploadProduct`,{
-    //     method : "POST",
-    //     headers : {
-    //       "content-type" : "application/json"
-    //     },
-    //     body : JSON.stringify(data)
-    //   })
+    if(name && image && category && price){
+      const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMIN}/uploadProduct`,{
+        method : "POST",
+        headers : {
+          "content-type" : "application/json"
+        },
+        body : JSON.stringify(data)
+      })
   
-    //   const fetchRes =  await fetchData.json()
+      const fetchRes =  await fetchData.json()
   
-    //   console.log(fetchRes)
-    //   toast(fetchRes.message)
+      console.log(fetchRes)
+      toast(fetchRes.message)
 
-    //   setData(()=>{
-    //     return{
-    //       name : "",
-    //       category : "",
-    //       image : "",
-    //       price : "",
-    //       description : ""
-    //     }
-    //   })
-    // }
-    // else{
-    //   toast("Enter required Fields")
-    // }
+      setData(()=>{
+        return{
+          name : "",
+          category : "",
+          image : "",
+          price : "",
+          description : ""
+        }
+      })
+    }
+    else{
+      toast("Enter required Fields")
+    }
     
    
   } 
