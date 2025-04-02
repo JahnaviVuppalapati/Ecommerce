@@ -6,7 +6,7 @@ const HomeCard = ({ name, image, category, price,
     // id 
 }) => {
   return (
-    <div className="bg-white shadow-md p-2 rounded min-w-[150px]">
+    <div className="bg-white shadow-md p-3 rounded min-w-[150px]">
       {name ? (
         <>
         {/* <Link to={`/menu/${id}`} onClick={()=>window.scrollTo({top:"0",behavior : "smooth"})} > */}

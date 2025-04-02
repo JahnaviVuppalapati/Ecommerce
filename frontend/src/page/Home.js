@@ -3,6 +3,7 @@ import bikeimg from "../assest/bikeicon.png"
 import HomeCard from "../component/HomeCard";
 import { useSelector } from "react-redux";
 import CardFeature from "../component/CardFeature";
+import { GrPrevious, GrNext } from "react-icons/gr";
 
 const Home = () => {
   const productData = useSelector((state) => state.product.productList)
@@ -26,7 +27,7 @@ const Home = () => {
   
   return (
     <div className="p-2 md:p-4">
-      <div className="md:flex gap-7 py-2">
+      <div className="md:flex gap-7 py-2 m-3">
         <div className="md:w-1/2">
           <div className="flex gap-3 bg-slate-300 w-36 px-2 items-center rounded-full">
             <p className="text-sm font-medium text-slate-900">Bike Delivery</p>
@@ -73,17 +74,24 @@ const Home = () => {
                 );
               })
             : loadingArray.map((el, index) => {
-                return <HomeCard key={index+"loading"} loading={"Loading..."} />;
+                return <HomeCard key={index+"loadging"} loading={"Loading..."} />;
               })}
         </div>
       </div>
 
       <div className="">
-        <div className="flex w-full items-center">
+        <div 
+        className="flex w-full items-center p-1 "
+        >
           <h2 className="font-bold text-2xl text-slate-800 mb-4">
             Fresh Vegetables
           </h2>
-          <div className=''>
+          <div className="ml-auto flex gap-4">
+            <button className="bg-slate-300 hover:bg-slate-400 text-lg  p-1 rounded"><GrPrevious /></button>
+            <button className="bg-slate-300 hover:bg-slate-400 text-lg  p-1 rounded"><GrNext /></button>
+          </div>
+          </div>  
+          <div className='flex gap-5 overflow-scroll'>
             {
               homeProductCartListVegetables.map((el) => {
                 return (
@@ -135,7 +143,7 @@ const Home = () => {
                 <CardFeature loading="Loading..." key={index+"cartLoading"} />
               ))} */}
         {/* </div> */}
-      </div>
+      
       
       {/* <AllProduct heading={"Your Product"}/> */}
     </div>

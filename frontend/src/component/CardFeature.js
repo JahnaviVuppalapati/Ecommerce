@@ -29,7 +29,7 @@ const CardFeature = ({ image, name, price, category,
             <div className="h-28 flex flex-col justify-center items-center">
               <img src={image} className="h-full" />
             </div>
-            {/* <h3 className="font-semibold text-slate-600  capitalize text-lg mt-4 whitespace-nowrap overflow-hidden">
+            <h3 className="font-semibold text-slate-600  capitalize text-lg mt-4 whitespace-nowrap overflow-hidden">
               {name}
             </h3>
             <p className=" text-slate-500  font-medium">{category}</p>
@@ -37,14 +37,14 @@ const CardFeature = ({ image, name, price, category,
               <span className="text-red-500">₹</span>
               <span>{price}</span>
             </p>
-          </Link> */}
-          {/* <button
+          {/* </Link> */}
+          <button
             className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full"
-            onClick={handleAddCartProduct}
+            // onClick={handleAddCartProduct}
           >
             Add Cart
           </button>
-        </> */}
+        {/* </> */}
       {/* ) : (
         <div className="min-h-[150px] flex justify-center items-center">
           <p>{loading}</p>
