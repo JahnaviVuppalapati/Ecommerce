@@ -2,16 +2,18 @@ import React from 'react'
 import bikeimg from "../assest/bikeicon.png"
 import HomeCard from "../component/HomeCard";
 import { useSelector } from "react-redux";
+import CardFeature from "../component/CardFeature";
 
 const Home = () => {
   const productData = useSelector((state) => state.product.productList)
   console.log(productData)
   const homeProductCartList = productData.slice(1, 5);
-  // const homeProductCartListVegetables = productData.filter(
-  //   (el) => el.category === "vegetable",
-  //   []
-  // );
-  // const loadingArray = new Array(4).fill(null);
+  const homeProductCartListVegetables = productData.filter(
+    (el) => el.category === "vegetable",
+    []
+  );
+  console.log(homeProductCartListVegetables)
+  const loadingArray = new Array(4).fill(null);
   // const loadingArrayFeature = new Array(10).fill(null);
 
   // const slideProductRef = useRef();
@@ -55,28 +57,14 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="md:w-1/2 flex flex-wrap gap-6 p-4 justify-center">
-        {
-          homeProductCartList[0] && homeProductCartList.map((el) => {
-             return (
-              <HomeCard
-              key={el._id}
-              image={el.image}
-                    name={el.name}
-                    price={el.price}
-                    category={el.category}
-                    />
-             )
-          })
-        }
-        </div>
-        {/* <div className="md:w-1/2 flex flex-wrap gap-5 p-4 justify-center">
+        
+        <div className="md:w-1/2 flex flex-wrap gap-5 p-4 justify-center">
           {homeProductCartList[0]
             ? homeProductCartList.map((el) => {
                 return (
                   <HomeCard
                     key={el._id}
-                    id={el._id}
+                    // id={el._id}
                     image={el.image}
                     name={el.name}
                     price={el.price}
@@ -87,7 +75,7 @@ const Home = () => {
             : loadingArray.map((el, index) => {
                 return <HomeCard key={index+"loading"} loading={"Loading..."} />;
               })}
-        </div> */}
+        </div>
       </div>
 
       <div className="">
@@ -95,6 +83,22 @@ const Home = () => {
           <h2 className="font-bold text-2xl text-slate-800 mb-4">
             Fresh Vegetables
           </h2>
+          <div className=''>
+            {
+              homeProductCartListVegetables.map((el) => {
+                return (
+                  <CardFeature
+                  key={el._id}
+                    
+                    name={el.name}
+                    category={el.category}
+                    price={el.price}
+                    image={el.image}
+                  />
+                )})
+            }
+            
+          </div>
           {/* <div className="ml-auto flex gap-4">
             <button
               onClick={preveProduct}
