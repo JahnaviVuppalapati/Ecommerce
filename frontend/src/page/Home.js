@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from "react";
 import bikeimg from "../assest/bikeicon.png"
 import HomeCard from "../component/HomeCard";
 import { useSelector } from "react-redux";
 import CardFeature from "../component/CardFeature";
 import { GrPrevious, GrNext } from "react-icons/gr";
-
+import { CiForkAndKnife } from "react-icons/ci";
+import FilterProduct from "../component/FilterProduct";
 const Home = () => {
   const productData = useSelector((state) => state.product.productList)
   console.log(productData)
@@ -15,16 +16,17 @@ const Home = () => {
   );
   console.log(homeProductCartListVegetables)
   const loadingArray = new Array(4).fill(null);
-  // const loadingArrayFeature = new Array(10).fill(null);
+  const loadingArrayFeature = new Array(10).fill(null);
 
-  // const slideProductRef = useRef();
-  // const nextProduct = () => {
-  //   slideProductRef.current.scrollLeft += 200;
-  // };
-  // const preveProduct = () => {
-  //   slideProductRef.current.scrollLeft -= 200;
-  // }; 
-  
+  const slideProductRef = useRef();
+  const nextProduct = () => {
+    slideProductRef.current.scrollLeft += 200;
+  }
+  const preveProduct = () => {
+    slideProductRef.current.scrollLeft -= 200;
+  }
+  const categoryList = [...new Set (productData.map(el=>el.category))]
+  console.log(categoryList)
   return (
     <div className="p-2 md:p-4">
       <div className="md:flex gap-7 py-2 m-3">
@@ -56,7 +58,7 @@ const Home = () => {
           <button className="font-bold bg-red-500 text-slate-200 px-4 py-2 rounded-md">
             Order Now
           </button>
-        </div>
+        </div>          
 
         
         <div className="md:w-1/2 flex flex-wrap gap-5 p-4 justify-center">
@@ -86,28 +88,9 @@ const Home = () => {
           <h2 className="font-bold text-2xl text-slate-800 mb-4">
             Fresh Vegetables
           </h2>
-          <div className="ml-auto flex gap-4">
-            <button className="bg-slate-300 hover:bg-slate-400 text-lg  p-1 rounded"><GrPrevious /></button>
-            <button className="bg-slate-300 hover:bg-slate-400 text-lg  p-1 rounded"><GrNext /></button>
-          </div>
-          </div>  
-          <div className='flex gap-5 overflow-scroll'>
-            {
-              homeProductCartListVegetables.map((el) => {
-                return (
-                  <CardFeature
-                  key={el._id}
-                    
-                    name={el.name}
-                    category={el.category}
-                    price={el.price}
-                    image={el.image}
-                  />
-                )})
-            }
             
-          </div>
-          {/* <div className="ml-auto flex gap-4">
+          
+          <div className="ml-auto flex gap-4">
             <button
               onClick={preveProduct}
               className="bg-slate-300 hover:bg-slate-400 text-lg  p-1 rounded"
@@ -120,18 +103,19 @@ const Home = () => {
             >
               <GrNext />
             </button>
-          </div> */}
+          </div>
+          </div>
         </div>
-        {/* <div
+        <div
           className="flex gap-5 overflow-scroll scrollbar-none scroll-smooth transition-all"
           ref={slideProductRef}
-        > */}
-          {/* {homeProductCartListVegetables[0]
+        >
+          {homeProductCartListVegetables[0]
             ? homeProductCartListVegetables.map((el) => {
                 return (
                   <CardFeature
-                    key={el._id+"vegetable"}
-                    id={el._id}
+                    key={el._id}
+                    // id={el._id}
                     name={el.name}
                     category={el.category}
                     price={el.price}
@@ -139,14 +123,40 @@ const Home = () => {
                   />
                 );
               })
-            : loadingArrayFeature.map((el,index) => (
-                <CardFeature loading="Loading..." key={index+"cartLoading"} />
-              ))} */}
-        {/* </div> */}
+            : loadingArrayFeature.map(
+              (el,
+                // index
+              ) => (
+                <CardFeature loading="Loading..." 
+                // key={index+"cartLoading"}
+                 />
+              )
+
+              )}
+        </div>
+        <div className="">
+        <h2 className="font-bold text-2xl text-slate-800 mb-4">
+            Your Product
+        </h2>
+
+        <div className="flex gap-4 justify-center overflow-scroll scrollbar-none">
+          {
+            categoryList[0] && categoryList.map(el=>{
+              return(
+                <FilterProduct category={el}></FilterProduct>
+              )
+            })
+          }
+          
+        </div>
+
+        <div className=""></div>
+
+        </div>
       
+       {/* <AllProduct heading={"Your Product"}/> */}
+      </div>
       
-      {/* <AllProduct heading={"Your Product"}/> */}
-    </div>
   )
 }
 

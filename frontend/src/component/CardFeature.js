@@ -4,7 +4,8 @@ import React from "react";
 // import { addCartItem,increaseQty } from "../redux/productSlide";
 
 const CardFeature = ({ image, name, price, category,
-    //  loading, id 
+     loading
+    // , id 
     }) => {
 //   const dispatch = useDispatch()
 
@@ -20,9 +21,10 @@ const CardFeature = ({ image, name, price, category,
 
   return (
     <div className="w-full min-w-[200px] max-w-[200px] bg-white hover:shadow-lg drop-shadow-lg py-5 px-4 cursor-pointer flex flex-col ">
-      {/* {image ? (
+        
+      {image ? (
         <>
-          <Link
+          {/* <Link
             to={`/menu/${id}`}
             onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}
           > */}
@@ -44,12 +46,12 @@ const CardFeature = ({ image, name, price, category,
           >
             Add Cart
           </button>
-        {/* </> */}
-      {/* ) : (
+        </>
+      ) : (
         <div className="min-h-[150px] flex justify-center items-center">
           <p>{loading}</p>
         </div>
-      )} */}
+      )}
     </div>
   );
 };
