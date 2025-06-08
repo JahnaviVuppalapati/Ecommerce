@@ -4,8 +4,9 @@ import HomeCard from "../component/HomeCard";
 import { useSelector } from "react-redux";
 import CardFeature from "../component/CardFeature";
 import { GrPrevious, GrNext } from "react-icons/gr";
-import { CiForkAndKnife } from "react-icons/ci";
 import FilterProduct from "../component/FilterProduct";
+
+
 const Home = () => {
   const productData = useSelector((state) => state.product.productList)
   console.log(productData)
@@ -27,6 +28,25 @@ const Home = () => {
   }
   const categoryList = [...new Set (productData.map(el=>el.category))]
   console.log(categoryList)
+
+  //filter data display
+  const [filterby,setFilterBy] = useState("")
+  const [dataFilter,setDataFilter] = useState([])
+  useEffect(()=>{
+    setDataFilter(productData)
+  },[productData])
+
+  const handleFilterProduct = (category)=>{
+    setFilterBy(category)
+    const filter = productData.filter(el => el.category.toLowerCase() === filterby.toLowerCase())
+    setDataFilter(()=>{
+      return[
+        ...filter
+      ]
+    })
+  }
+  
+
   return (
     <div className="p-2 md:p-4">
       <div className="md:flex gap-7 py-2 m-3">
@@ -134,7 +154,8 @@ const Home = () => {
 
               )}
         </div>
-        <div className="">
+
+        <div className="my-5">
         <h2 className="font-bold text-2xl text-slate-800 mb-4">
             Your Product
         </h2>
@@ -143,14 +164,27 @@ const Home = () => {
           {
             categoryList[0] && categoryList.map(el=>{
               return(
-                <FilterProduct category={el}></FilterProduct>
+                <FilterProduct key ={el} category={el} onClick={()=>handleFilterProduct(el)}/>
               )
             })
           }
           
         </div>
 
-        <div className=""></div>
+        <div className="flex flex-wrap justify-center gap-5">
+          {
+            dataFilter.map(el => {
+              return(
+                <CardFeature
+                key = {el._id}
+                image = {el.image}
+                name = {el.name}
+                category = {el.category}
+                />
+              )
+            })
+          }
+        </div>
 
         </div>
       

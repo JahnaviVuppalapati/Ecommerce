@@ -85,7 +85,7 @@ const Header = () => {
                   </Link>
                 )}
 
-          <nav className=" gap-4 md:gap-6 text-base md:text-lg flex flex-col md ">
+          <nav className=" gap-4 md:gap-6 text-base md:text-lg flex flex-col md:hidden ">
             <Link to={""} className="px-2 py-1">Home</Link>
             <Link to={"menu"} className="px-2 py-1">Menu</Link>
             <Link to={"about"} className="px-2 py-1">About</Link>
