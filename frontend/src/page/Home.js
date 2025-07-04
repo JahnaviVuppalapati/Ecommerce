@@ -171,7 +171,7 @@ const Home = () => {
           
         </div>
 
-        <div className="flex flex-wrap justify-center gap-5">
+        <div className="flex flex-wrap justify-center gap-5 my-4">
           {
             dataFilter.map(el => {
               return(
@@ -180,6 +180,7 @@ const Home = () => {
                 image = {el.image}
                 name = {el.name}
                 category = {el.category}
+                price={el.price}
                 />
               )
             })

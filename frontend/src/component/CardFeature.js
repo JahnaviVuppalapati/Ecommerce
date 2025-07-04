@@ -1,11 +1,11 @@
 import React from "react";
 // import { useDispatch } from "react-redux";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { addCartItem,increaseQty } from "../redux/productSlide";
 
 const CardFeature = ({ image, name, price, category,
      loading
-    // , id 
+    , id 
     }) => {
 //   const dispatch = useDispatch()
 
@@ -24,10 +24,10 @@ const CardFeature = ({ image, name, price, category,
         
       {image ? (
         <>
-          {/* <Link
+          <Link
             to={`/menu/${id}`}
             onClick={() => window.scrollTo({ top: "0", behavior: "smooth" })}
-          > */}
+          >
             <div className="h-28 flex flex-col justify-center items-center">
               <img src={image} className="h-full" />
             </div>
@@ -39,7 +39,7 @@ const CardFeature = ({ image, name, price, category,
               <span className="text-red-500">₹</span>
               <span>{price}</span>
             </p>
-          {/* </Link> */}
+          </Link>
           <button
             className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full"
             // onClick={handleAddCartProduct}
