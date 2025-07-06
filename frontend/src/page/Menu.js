@@ -1,10 +1,14 @@
-import React from 'react'
-import { useNavigate, useParams } from "react-router-dom";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import AllProduct from "../component/AllProduct";
+
 
 const Menu = () => {
   // const { filterby }
   const { filterby } = useParams();
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const productData = useSelector((state) => state.product.productList);
 
   const productDisplay = productData.filter((el) => el._id === filterby)[0];
@@ -41,6 +45,7 @@ const Menu = () => {
           </div>
         </div>
       </div>
+      <AllProduct heading={"Related Product"}/>
     </div>
   )
 }

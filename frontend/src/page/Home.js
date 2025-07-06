@@ -4,7 +4,7 @@ import HomeCard from "../component/HomeCard";
 import { useSelector } from "react-redux";
 import CardFeature from "../component/CardFeature";
 import { GrPrevious, GrNext } from "react-icons/gr";
-import FilterProduct from "../component/FilterProduct";
+import AllProduct from "../component/AllProduct";
 
 
 const Home = () => {
@@ -26,25 +26,8 @@ const Home = () => {
   const preveProduct = () => {
     slideProductRef.current.scrollLeft -= 200;
   }
-  const categoryList = [...new Set (productData.map(el=>el.category))]
-  console.log(categoryList)
-
-  //filter data display
-  const [filterby,setFilterBy] = useState("")
-  const [dataFilter,setDataFilter] = useState([])
-  useEffect(()=>{
-    setDataFilter(productData)
-  },[productData])
-
-  const handleFilterProduct = (category)=>{
-    setFilterBy(category)
-    const filter = productData.filter(el => el.category.toLowerCase() === filterby.toLowerCase())
-    setDataFilter(()=>{
-      return[
-        ...filter
-      ]
-    })
-  }
+  
+ 
   
 
   return (
@@ -87,7 +70,7 @@ const Home = () => {
                 return (
                   <HomeCard
                     key={el._id}
-                    // id={el._id}
+                    id={el._id}
                     image={el.image}
                     name={el.name}
                     price={el.price}
@@ -135,7 +118,7 @@ const Home = () => {
                 return (
                   <CardFeature
                     key={el._id}
-                    // id={el._id}
+                    id={el._id}
                     name={el.name}
                     category={el.category}
                     price={el.price}
@@ -155,41 +138,9 @@ const Home = () => {
               )}
         </div>
 
-        <div className="my-5">
-        <h2 className="font-bold text-2xl text-slate-800 mb-4">
-            Your Product
-        </h2>
-
-        <div className="flex gap-4 justify-center overflow-scroll scrollbar-none">
-          {
-            categoryList[0] && categoryList.map(el=>{
-              return(
-                <FilterProduct key ={el} category={el} onClick={()=>handleFilterProduct(el)}/>
-              )
-            })
-          }
-          
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-5 my-4">
-          {
-            dataFilter.map(el => {
-              return(
-                <CardFeature
-                key = {el._id}
-                image = {el.image}
-                name = {el.name}
-                category = {el.category}
-                price={el.price}
-                />
-              )
-            })
-          }
-        </div>
-
-        </div>
+        
       
-       {/* <AllProduct heading={"Your Product"}/> */}
+       <AllProduct heading={"Your Product"}/>
       </div>
       
   )
