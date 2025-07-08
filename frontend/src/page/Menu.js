@@ -5,7 +5,7 @@ import AllProduct from "../component/AllProduct";
 
 
 const Menu = () => {
-  // const { filterby }
+  
   const { filterby } = useParams();
   const navigate = useNavigate()
   const dispatch = useDispatch()

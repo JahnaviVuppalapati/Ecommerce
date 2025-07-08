@@ -33,31 +33,43 @@ const AllProduct = ({ heading }) => {
         </h2>
 
         <div className="flex gap-4 justify-center overflow-scroll scrollbar-none">
-          {
-            categoryList[0] && categoryList.map(el=>{
-              return(
-                <FilterProduct key ={el} category={el} onClick={()=>handleFilterProduct(el)}/>
-              )
-            })
-          }
+          {categoryList[0] ? (
+          categoryList.map((el) => {
+            return (
+              <FilterProduct
+                category={el}
+                key={el}
+                isActive={el.toLowerCase() === filterby.toLowerCase()}
+                onClick={() => handleFilterProduct(el)}
+              />
+            );
+          })
+        ) : (
+          <div className="min-h-[150px] flex justify-center items-center">
+            <p>Loading...</p>
+          </div>
+        )}
           
         </div>
 
         <div className="flex flex-wrap justify-center gap-5 my-4">
-          {
-            dataFilter.map(el => {
-              return(
+         {dataFilter[0]
+          ? dataFilter.map((el) => {
+              return (
                 <CardFeature
-                key = {el._id}
-                id = {el._id}
-                image = {el.image}
-                name = {el.name}
-                category = {el.category}
-                price={el.price}
+                  key={el._id}
+                  id={el._id}
+                  image={el.image}
+                  name={el.name}
+                  category={el.category}
+                  price={el.price}
                 />
-              )
+              );
             })
-          }
+          : 
+          loadingArrayFeature.map((el,index) => (
+              <CardFeature loading="Loading..." key={index+"allProduct"} />
+            ))}
         </div>
 
         </div>
