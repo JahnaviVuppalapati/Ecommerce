@@ -117,7 +117,7 @@ const Home = () => {
             ? homeProductCartListVegetables.map((el) => {
                 return (
                   <CardFeature
-                    key={el._id}
+                    key={el._id + "vegetables"}
                     id={el._id}
                     name={el.name}
                     category={el.category}
@@ -128,10 +128,11 @@ const Home = () => {
               })
             : loadingArrayFeature.map(
               (el,
-                // index
+                index
               ) => (
                 <CardFeature loading="Loading..." 
-                // key={index+"cartLoading"}
+                // key={index}
+                key={index+"cartLoading"}
                  />
               )
 

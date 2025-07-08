@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     productList: [],
-    // cartItem: [],
+    cartItem: [],
   };
 
 export const productSlice = createSlice({
@@ -13,25 +13,31 @@ export const productSlice = createSlice({
       console.log(action)
       state.productList = [...action.payload];
     },
-    // addCartItem: (state, action) => {
-    //   const check = state.cartItem.some((el) => el._id === action.payload._id);
-    //   if (check) {
-    //     toast("Already Item in Cart");
-    //   } else {
-    //     toast("Item Add successfully");
-    //     const total = action.payload.price;
-    //     state.cartItem = [
-    //       ...state.cartItem,
-    //       { ...action.payload, qty: 1, total: total },
-    //     ];
-    //   }
-    // },
-    // deleteCartItem: (state, action) => {
-    //   toast("one Item Delete");
-    //   const index = state.cartItem.findIndex((el) => el._id === action.payload);
-    //   state.cartItem.splice(index, 1);
-    //   console.log(index);
-    // },
+    addCartItem: (state, action) => {
+      // const check = state.cartItem.some((el) => el._id === action.payload._id);
+      console.log(action)
+      const total = action.payload.price;
+        state.cartItem = [
+          ...state.cartItem,
+          { ...action.payload, qty: 1, total: total },
+        ];
+      // if (check) {
+        // toast("Already Item in Cart");
+      // } else {
+        // toast("Item Add successfully");
+        // const total = action.payload.price;
+        // state.cartItem = [
+        //   ...state.cartItem,
+        //   { ...action.payload, qty: 1, total: total },
+        // ];
+      // }
+    },
+    deleteCartItem: (state, action) => {
+      // toast("one Item Delete");
+      // const index = state.cartItem.findIndex((el) => el._id === action.payload);
+      // state.cartItem.splice(index, 1);
+      // console.log(index);
+    },
     // increaseQty: (state, action) => {
     //   const index = state.cartItem.findIndex((el) => el._id === action.payload);
     //   let qty = state.cartItem[index].qty;
@@ -60,8 +66,8 @@ export const productSlice = createSlice({
 });
 export const {
     setDataProduct,
-    // addCartItem,
-    // deleteCartItem,
+    addCartItem,
+    deleteCartItem,
     // increaseQty,
     // decreaseQty,
   } = productSlice.actions;
