@@ -10,12 +10,12 @@ export const productSlice = createSlice({
   initialState,
   reducers: {
     setDataProduct: (state, action) => {
-      console.log(action)
+      
       state.productList = [...action.payload];
     },
     addCartItem: (state, action) => {
       // const check = state.cartItem.some((el) => el._id === action.payload._id);
-      console.log(action)
+      
       const total = action.payload.price;
         state.cartItem = [
           ...state.cartItem,

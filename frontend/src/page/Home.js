@@ -15,7 +15,7 @@ const Home = () => {
     (el) => el.category === "vegetable",
     []
   );
-  console.log(homeProductCartListVegetables)
+
   const loadingArray = new Array(4).fill(null);
   const loadingArrayFeature = new Array(10).fill(null);
 

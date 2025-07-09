@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import AllProduct from "../component/AllProduct";
+import { addCartItem } from "../redux/productSlice";
 
 
 const Menu = () => {
@@ -13,6 +14,11 @@ const Menu = () => {
 
   const productDisplay = productData.filter((el) => el._id === filterby)[0];
   console.log(productData)
+
+  const handleAddCartProduct = (e) => {
+    dispatch(addCartItem(productDisplay))
+  };
+
   return (
     <div className="p-2 md:p-4">
       <div className='w-full max-w-4xl m-auto md:flex bg-white'>
@@ -36,7 +42,7 @@ const Menu = () => {
           // onClick={handleBuy} 
           className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 min-w-[100px]">Buy</button>
           <button 
-          // onClick={handleAddCartProduct} 
+          onClick={handleAddCartProduct} 
           className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 min-w-[100px]">Add Cart</button>
           </div>
           <div>
