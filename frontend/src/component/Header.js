@@ -10,7 +10,7 @@ import { toast } from "react-hot-toast";
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const userData = useSelector((state) => state.user);
-  console.log(userData);
+  // console.log(userData);
   const dispatch = useDispatch();
 
   const handleShowMenu = () => {
@@ -20,8 +20,9 @@ const Header = () => {
     dispatch(logoutRedux());
     toast("logged out succesfully");
   };
-  console.log(process.env.REACT_APP_ADMIN_EMAIL)
-
+  // console.log(process.env.REACT_APP_ADMIN_EMAIL)
+  const cartItemNumber = useSelector((state)=>state.product.cartItem)
+ 
   return (
     <header className="fixed shadow-md w-full h-16 px-2 md:px-4 z-50 bg-white">
       {/* desktop */}
@@ -45,7 +46,7 @@ const Header = () => {
             <Link to={"cart"}>
             <FaShoppingCart />
             <div className="absolute -top-1 -right-1 text-white bg-red-500 h-4 w-4 rounded-full m-0 p-0 text-sm text-center">
-              0
+              {cartItemNumber.length}
             </div>
             </Link>
           </div>

@@ -20,7 +20,7 @@ const CardFeature = ({ image, name, price, category,
       image : image
     }
     ))
-    alert("clicked hi")
+    
   };
 
   return (
