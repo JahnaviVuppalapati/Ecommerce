@@ -12,9 +12,13 @@ import Contact from "./page/Contact";
 import Login from "./page/Login";
 import Newproduct from "./page/Newproduct";
 import Signup from "./page/Signup";
+<<<<<<< HEAD
 import Cart from "./page/CartPage.js";
 import Success from "./page/Success.js";
 import Cancel from "./page/Cancel.js";
+=======
+import Cart from "./page/Cart";
+>>>>>>> 11c87e596b2684b056488c30ef00a2590aedd224
 import { store } from "./redux/index";
 import { Provider } from "react-redux";
 
@@ -30,11 +34,14 @@ const router = createBrowserRouter(
       <Route path="newproduct" element={<Newproduct />} />
       <Route path="signup" element={<Signup />} />
       <Route path="cart" element={<Cart />} />
+<<<<<<< HEAD
       <Route path="success" element={<Success/>}/>
 
       <Route path="cancel" element={<Cancel/>}/>
   
      
+=======
+>>>>>>> 11c87e596b2684b056488c30ef00a2590aedd224
     </Route>
   )
 );

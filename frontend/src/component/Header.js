@@ -20,7 +20,11 @@ const Header = () => {
     dispatch(logoutRedux());
     toast("logged out succesfully");
   };
+<<<<<<< HEAD
   // console.log(process.env.REACT_APP_ADMIN_EMAIL)
+=======
+  console.log(process.env.REACT_APP_ADMIN_EMAIL)
+>>>>>>> 11c87e596b2684b056488c30ef00a2590aedd224
   const cartItemNumber = useSelector((state)=>state.product.cartItem)
  
   return (
