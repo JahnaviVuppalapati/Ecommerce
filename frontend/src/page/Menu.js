@@ -13,23 +13,16 @@ const Menu = () => {
   const productData = useSelector((state) => state.product.productList);
 
   const productDisplay = productData.filter((el) => el._id === filterby)[0];
-<<<<<<< HEAD
 
-=======
-  console.log(productData)
->>>>>>> 11c87e596b2684b056488c30ef00a2590aedd224
 
   const handleAddCartProduct = (e) => {
     dispatch(addCartItem(productDisplay))
   };
-<<<<<<< HEAD
   const handleBuy = ()=>{
     dispatch(addCartItem(productDisplay))
       navigate("/cart")
   }
-=======
 
->>>>>>> 11c87e596b2684b056488c30ef00a2590aedd224
   return (
     <div className="p-2 md:p-4">
       <div className='w-full max-w-4xl m-auto md:flex bg-white'>

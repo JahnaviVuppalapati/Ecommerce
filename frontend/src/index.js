@@ -15,7 +15,7 @@ import Signup from "./page/Signup";
 import Cart from "./page/CartPage.js";
 import Success from "./page/Success.js";
 import Cancel from "./page/Cancel.js";
-import Cart from "./page/Cart";
+
 import { store } from "./redux/index";
 import { Provider } from "react-redux";
 
