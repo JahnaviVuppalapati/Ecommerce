@@ -42,8 +42,8 @@ const Home = () => {
             />
           </div>
           <h2 className="text-4xl md:text-7xl font-bold py-3">
-            The Fasted Delivery in{" "}
-            <span className="text-red-600 text-">Your Home</span>
+            The Quickest Delivery to{" "}
+            <span className="text-red-600 text-">Your Location</span>
           </h2>
           <p className="py-3 text-base ">
             Lorem Ipsum is simply dummy text of the printing and typesetting
