@@ -8,6 +8,12 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'https://ekaart-ecommerce.vercel.app', //  allow frontend origin
+  credentials: true, // 
+}));
 const PORT = process.env.PORT || 8080;
 
 //mongodb connection
